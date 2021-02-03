@@ -1,6 +1,6 @@
-# Fram
+# [Fram](https://fram.netlify.app/)
 
-[Fram](https://fram.netlify.app/) is a small web application inspired by Danil Kozlov's awesome [design](https://www.behance.net/gallery/101008359/Travelly-Booking-Hotel-UXUI) and beauty of Norway.
+Fram is a small web application inspired by Danil Kozlov's awesome [design](https://www.behance.net/gallery/101008359/Travelly-Booking-Hotel-UXUI) and beauty of Norway.
 
 ## Technologies
 
