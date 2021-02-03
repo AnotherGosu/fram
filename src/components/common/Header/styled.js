@@ -18,6 +18,8 @@ export const Header = styled.header`
   }
 
   .logo {
+    color: var(--color-black);
+    text-decoration: none;
     font-size: 2rem;
     font-weight: 500;
   }

@@ -4,7 +4,6 @@ import { Switch, Route, Redirect } from "react-router-dom";
 
 import CommonLoader from "./common/Loader";
 import CommonScrollToTop from "./common/ScrollToTop";
-import CommonPrivateRoute from "./common/PrivateRoute";
 
 const Hotels = lazy(() => import("./pages/Hotels"));
 const Hotel = lazy(() => import("./pages/Hotel"));
@@ -25,9 +24,7 @@ function App() {
           <Redirect exact from="/" to="/hotels" />
           <Route exact path="/hotels" component={Hotels} />
           <Route exact path="/hotels/:hotelId" component={Hotel} />
-          <CommonPrivateRoute exact path="/hotels/:hotelId/book/:roomId">
-            <Book />
-          </CommonPrivateRoute>
+          <Route exact path="/hotels/:hotelId/book/:roomId" component={Book} />
           <Route exact path="/news" component={News} />
           <Route exact path="/reviews" component={Reviews} />
           <Route exact path="/log-in" component={LogIn} />

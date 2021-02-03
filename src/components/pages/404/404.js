@@ -6,11 +6,11 @@ const NotFound = () => {
       <Section>
         <h1 className="hidden">Page not found</h1>
         <span className="code">404</span>
-        <span className="text">
+        <p className="text">
           The page you are requesting does not exist.
           <br /> But you found this beautiful place.
-        </span>
-        <span className="subtext">Don't rush and enjoy the view.</span>
+        </p>
+        <p className="subtext">Don't rush and enjoy the view.</p>
         <LinkButton to="/hotels" text="Return home" />
       </Section>
     </PageContainer>

@@ -8,6 +8,7 @@ import {
 import { GiKnifeFork } from "react-icons/gi";
 import { CgGym } from "react-icons/cg";
 
+//*-----Hotels-----*\\
 export const cities = [
   "Oslo",
   "Bergen",
@@ -16,20 +17,12 @@ export const cities = [
   "Kristiansand",
 ];
 
-export const facilitiesNames = ["tv", "kitchen", "internet", "gym"];
-export const facilitiesIcons = {
-  internet: <FaWifi />,
-  gym: <CgGym />,
+export const facilities = {
   tv: <FaTv />,
   kitchen: <GiKnifeFork />,
+  internet: <FaWifi />,
+  gym: <CgGym />,
 };
-
-export const headerLinks = [
-  { name: "Hotels", path: "/hotels" },
-  { name: "News", path: "/news" },
-  { name: "Reviews", path: "/reviews" },
-  { name: "About us", path: "/about" },
-];
 
 export const roomTypes = [
   "Single",
@@ -44,6 +37,19 @@ export const roomTypes = [
   "President",
 ];
 
+export const hotelsOnPage = 9;
+//*-----Hotels-----*\\
+
+//*-----Header-----*\\
+export const headerLinks = [
+  { name: "Hotels", path: "/hotels" },
+  { name: "News", path: "/news" },
+  { name: "Reviews", path: "/reviews" },
+  { name: "About us", path: "/about" },
+];
+//*-----Header-----*\\
+
+//*-----Footer-----*\\
 export const footerLinks = [
   { name: "For tourists", route: "/tourists" },
   { name: "For agencies", route: "/agencies" },
@@ -64,5 +70,4 @@ export const footerSocials = [
   { icon: <FaTwitter />, url: "https://twitter.com/" },
   { icon: <FaFacebookSquare />, url: "https://www.facebook.com/" },
 ];
-
-export const hotelsOnPage = 9;
+//*-----Footer-----*\\

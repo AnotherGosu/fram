@@ -37,8 +37,16 @@ export const Container = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-fit: center;
+    object-position: center;
     border-radius: 8px;
+  }
+
+  @media screen and (max-width: 1465px) {
+    height: 600px;
+  }
+
+  @media screen and (max-width: 900px) {
+    height: 400px;
   }
 
   @media screen and (max-width: 750px) {

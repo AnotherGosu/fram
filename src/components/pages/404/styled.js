@@ -21,43 +21,32 @@ export const Section = styled.section`
   margin-left: 150px;
 
   .code {
-    font-size: 12rem;
+    font-size: 10em;
   }
 
   .text {
-    font-size: 2rem;
+    font-size: 2em;
     font-weight: 500;
     line-height: 2.8rem;
     margin: 10px 0 25px 0;
   }
 
   .subtext {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
   }
 
   @media screen and (max-width: 1260px) {
-    .code {
-      font-size: 8rem;
-    }
-
-    .text {
-      font-size: 1.6rem;
-    }
+    font-size: 0.8rem;
   }
 
   @media screen and (max-width: 900px) {
     margin-left: 0;
     align-items: center;
     text-align: center;
-  }
+    font-size: 0.55rem;
 
-  @media screen and (max-width: 500px) {
-    .code {
-      font-size: 6rem;
-    }
-
-    .text {
-      font-size: 1.4rem;
+    .subtext {
+      font-size: 1.2rem;
     }
   }
 `;

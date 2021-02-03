@@ -11,7 +11,7 @@ const BookingSummary = () => {
   const room = useSelector((state) => selectRoomById(state, hotelId, roomId));
 
   const { price } = room;
-  const tax = price * 0.05;
+  const tax = Number((price * 0.05).toFixed(2));
   const total = price + tax;
 
   return (

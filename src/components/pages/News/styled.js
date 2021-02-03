@@ -12,13 +12,13 @@ const Grid = styled.div`
 `;
 
 export const AllNewsGrid = styled(Grid)`
-  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-  grid-auto-rows: 450px;
+  grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+  grid-auto-rows: 500px;
 `;
 
 export const PopularNewsGrid = styled(Grid)`
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  grid-auto-rows: 600px;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-auto-rows: 700px;
 `;
 
 export const Content = styled.div`

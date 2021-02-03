@@ -1,6 +1,7 @@
 import { Header } from "./styled";
 import React from "react";
 import useToggle from "hooks/useToggle";
+import { Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 import CommonIconButton from "components/common/IconButton";
@@ -20,7 +21,9 @@ const CommonHeader = () => {
         onClick={toggleModal}
         className="hamburger-button"
       />
-      <span className="logo">Fram</span>
+      <Link to="/hotels" className="logo">
+        Fram
+      </Link>
       <Navigation className="header-nav" />
       <Authorization className="header-authorization" />
       <ModalMenu toggleModal={toggleModal} isModalOpen={isModalOpen} />

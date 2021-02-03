@@ -1,4 +1,5 @@
 import { Container } from "./styled";
+import React from "react";
 
 import CommonModal from "components/common/Modal";
 import Authorization from "../Authorization";
@@ -15,4 +16,4 @@ const ModalMenu = ({ toggleModal, isModalOpen }) => {
   );
 };
 
-export default ModalMenu;
+export default React.memo(ModalMenu);

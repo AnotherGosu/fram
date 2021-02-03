@@ -8,11 +8,11 @@ export const DataInputs = styled.div`
 
 export const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
   column-gap: 100px;
   row-gap: 50px;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 700px) {
     grid-template-columns: 1fr;
   }
 

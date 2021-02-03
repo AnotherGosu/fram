@@ -1,5 +1,5 @@
 import styled from "styled-components/macro";
-import { facilitiesIcons } from "constants.js";
+import { facilities as facilitiesIcons } from "constants.js";
 import { IconContext } from "react-icons";
 
 const Facilities = ({ facilities }) => {

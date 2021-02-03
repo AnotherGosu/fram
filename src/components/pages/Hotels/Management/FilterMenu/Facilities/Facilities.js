@@ -1,13 +1,13 @@
 import styled from "styled-components/macro";
-import { facilitiesNames } from "constants.js";
+import { facilities } from "constants.js";
 
 import Facility from "./Facility";
 
 const Facilities = () => {
   return (
     <Container>
-      {facilitiesNames.map((name, index) => (
-        <Facility name={name} key={index} />
+      {Object.keys(facilities).map((facility, index) => (
+        <Facility name={facility} key={index} />
       ))}
     </Container>
   );

@@ -19,7 +19,7 @@ export const Article = styled.article`
 
 export const ImagesContainer = styled.div`
   display: flex;
-  height: 200px;
+  height: 300px;
   gap: 15px;
 `;
 
