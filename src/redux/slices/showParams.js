@@ -12,7 +12,7 @@ const slice = createSlice({
   initialState: {
     status: "idle",
     hotelName: "",
-    sortType: "",
+    sortType: "popularity",
     currentPage: 1,
   },
   extraReducers: {

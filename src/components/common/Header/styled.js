@@ -28,6 +28,12 @@ export const Header = styled.header`
     flex-basis: 40%;
   }
 
+  .header-authorization {
+    width: 200px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
   @media screen and (max-width: 1350px) {
     padding: 20px 50px;
   }
