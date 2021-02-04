@@ -1,8 +1,8 @@
 import { Grid } from "./styled";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchHotels, selectHotelById } from "redux/slices/hotels";
+import { useSelector } from "react-redux";
+import { selectHotelById } from "redux/slices/hotels";
 import { selectFilteredRoomsByHotelId } from "redux/slices/rooms";
+import useHotelFetch from "hooks/useHotelFetch";
 
 import CommonPageContainer from "components/common/PageContainer";
 import Gallery from "./Gallery";
@@ -11,7 +11,6 @@ import Rooms from "./Rooms";
 
 const Hotel = ({ match }) => {
   const { hotelId } = match.params;
-  const dispatch = useDispatch();
 
   const hotel = useSelector((state) => selectHotelById(state, hotelId));
   const filteredRooms = useSelector((state) =>
@@ -27,9 +26,7 @@ const Hotel = ({ match }) => {
     rooms = [],
   } = hotel || {};
 
-  useEffect(() => {
-    if (!hotel) dispatch(fetchHotels(hotelId));
-  }, [dispatch, hotel, hotelId]);
+  useHotelFetch(hotelId, hotel);
 
   return (
     <CommonPageContainer slice="hotels" title={name}>

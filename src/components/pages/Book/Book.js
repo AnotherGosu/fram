@@ -1,4 +1,8 @@
 import { Grid, DataInputs } from "./styled";
+import { useSelector } from "react-redux";
+import { selectRoomById } from "redux/slices/rooms";
+import { useParams } from "react-router-dom";
+import useHotelFetch from "hooks/useHotelFetch";
 
 import CommonPageContainer from "components/common/PageContainer";
 import PaymentOptions from "./PaymentOptions";
@@ -6,8 +10,13 @@ import ContactInfo from "./ContactInfo";
 import BookingSummary from "./BookingSummary";
 
 const Book = () => {
+  const { hotelId, roomId } = useParams();
+  const room = useSelector((state) => selectRoomById(state, hotelId, roomId));
+
+  useHotelFetch(hotelId, room);
+
   return (
-    <CommonPageContainer title="Book">
+    <CommonPageContainer title="Book" slice="hotels">
       <Grid>
         <DataInputs>
           <section>
@@ -22,7 +31,7 @@ const Book = () => {
         <div>
           <section>
             <h2>Booking summary</h2>
-            <BookingSummary />
+            <BookingSummary room={room} />
           </section>
         </div>
       </Grid>

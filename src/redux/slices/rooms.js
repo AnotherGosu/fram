@@ -75,6 +75,10 @@ export const selectRoomById = createSelector(
   (_, __, roomId) => roomId,
   (state, hotelId, roomId) => {
     const rooms = selectRoomsByHotelId(state, hotelId);
-    return rooms.filter((room) => room.id === roomId).pop();
+    if (rooms) {
+      return rooms.filter((room) => room.id === roomId).pop();
+    } else {
+      return undefined;
+    }
   }
 );

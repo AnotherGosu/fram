@@ -18,7 +18,7 @@ const CommonPageContainer = ({ children, slice = "", title = "" }) => {
   return (
     <>
       <CommonHeader />
-      <Main>{status === "pending" ? <CommonPageLoader /> : children}</Main>
+      <Main>{status !== "fulfilled" ? <CommonPageLoader /> : children}</Main>
       <CommonFooter />
     </>
   );

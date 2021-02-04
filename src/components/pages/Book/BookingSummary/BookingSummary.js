@@ -1,16 +1,10 @@
 import { Container, Price, PriceTax } from "./styled";
-import { useSelector } from "react-redux";
-import { selectRoomById } from "redux/slices/rooms";
-import { useParams } from "react-router-dom";
 
 import CommonButton from "components/common/Button";
 import CommonRoom from "components/common/Room";
 
-const BookingSummary = () => {
-  const { hotelId, roomId } = useParams();
-  const room = useSelector((state) => selectRoomById(state, hotelId, roomId));
-
-  const { price } = room;
+const BookingSummary = ({ room = {} }) => {
+  const { price = 0 } = room;
   const tax = Number((price * 0.05).toFixed(2));
   const total = price + tax;
 
