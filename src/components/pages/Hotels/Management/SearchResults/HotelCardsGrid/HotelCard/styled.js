@@ -40,6 +40,7 @@ export const Badge = styled.span`
 export const Info = styled.div`
   display: flex;
   flex-direction: column;
+  height: calc(100% - 250px);
   gap: 10px;
   background-color: var(--color-gray);
   padding: 15px;
