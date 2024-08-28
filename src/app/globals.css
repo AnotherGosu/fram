@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .focus-ring {
+    @apply transition focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+
+  .loader {
+    @apply animate-pulse bg-slate-200;
+  }
+
+  .popover-animation {
+    @apply will-change-[transform,opacity] data-[state=open]:data-[side=bottom]:animate-slideUpAndFade data-[state=open]:data-[side=left]:animate-slideRightAndFade data-[state=open]:data-[side=right]:animate-slideLeftAndFade data-[state=open]:data-[side=top]:animate-slideDownAndFade;
+  }
+}
