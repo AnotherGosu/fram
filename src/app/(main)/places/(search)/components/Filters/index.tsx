@@ -1,4 +1,5 @@
-import { SelectOption } from "@/types/common";
+import { getAccommodationMaxPrice } from "@/api/accommodations";
+import { getFacilityOptions } from "@/api/options";
 
 import { BedsFilter } from "./components/BedsFilter";
 import { FacilitiesFilter } from "./components/FacilitiesFilter";
@@ -6,12 +7,12 @@ import { PriceFilter } from "./components/PriceFilter";
 import { RatingFilter } from "./components/RatingFilter";
 import { RoomsFilter } from "./components/RoomsFilter";
 
-interface FiltersProps {
-  maxPrice: string;
-  facilityOptions: SelectOption[];
-}
+export const Filters = async () => {
+  const [maxPrice, facilityOptions] = await Promise.all([
+    getAccommodationMaxPrice(),
+    getFacilityOptions(),
+  ]);
 
-export const Filters = ({ maxPrice, facilityOptions }: FiltersProps) => {
   return (
     <div
       className="flex flex-col gap-8"

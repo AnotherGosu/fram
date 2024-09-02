@@ -3,9 +3,6 @@ import { Suspense } from "react";
 
 import { SearchParams } from "@/types/common";
 
-import { getAccommodationMaxPrice } from "@/api/accommodations";
-import { getFacilityOptions } from "@/api/options";
-
 import heroImg from "@/images/hero.jpg";
 
 import { createQueryString } from "@/lib";
@@ -25,12 +22,7 @@ interface PageProps {
   searchParams: SearchParams;
 }
 
-export default async function Page({ searchParams }: PageProps) {
-  const [maxPrice, facilityOptions] = await Promise.all([
-    getAccommodationMaxPrice(),
-    getFacilityOptions(),
-  ]);
-
+export default function Page({ searchParams }: PageProps) {
   return (
     <>
       <section className="relative mb-12 flex items-center justify-center overflow-hidden rounded-md p-4 md:p-8 lg:p-16 xl:p-24 2xl:p-32">
@@ -69,10 +61,9 @@ export default async function Page({ searchParams }: PageProps) {
 
             <SortSelect />
 
-            <FiltersDrawer
-              maxPrice={maxPrice}
-              facilityOptions={facilityOptions}
-            />
+            <FiltersDrawer>
+              <Filters />
+            </FiltersDrawer>
           </div>
         </section>
 
@@ -82,10 +73,7 @@ export default async function Page({ searchParams }: PageProps) {
         >
           <h2 className="mb-8 text-xl font-semibold">Filters</h2>
 
-          <Filters
-            maxPrice={maxPrice}
-            facilityOptions={facilityOptions}
-          />
+          <Filters />
         </section>
 
         <section

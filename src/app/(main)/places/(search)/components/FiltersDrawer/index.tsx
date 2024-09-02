@@ -1,22 +1,15 @@
 "use client";
 
-import { Filters } from "../Filters";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Filter } from "lucide-react";
-
-import { SelectOption } from "@/types/common";
 
 import { Button } from "@/components/common/Button";
 
 interface FiltersDrawerProps {
-  maxPrice: string;
-  facilityOptions: SelectOption[];
+  children: React.ReactNode;
 }
 
-export const FiltersDrawer = ({
-  maxPrice,
-  facilityOptions,
-}: FiltersDrawerProps) => {
+export const FiltersDrawer = ({ children }: FiltersDrawerProps) => {
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
@@ -45,10 +38,7 @@ export const FiltersDrawer = ({
             Filters
           </Dialog.Title>
 
-          <Filters
-            maxPrice={maxPrice}
-            facilityOptions={facilityOptions}
-          />
+          {children}
 
           <Dialog.Close asChild>
             <Button
