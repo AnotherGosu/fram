@@ -12,7 +12,7 @@
  * formatPrice("200", "nb-NO", "NOK") // returns "200 kr"
  */
 export const formatPrice = (
-  value: string,
+  value: string | number,
   locale: Intl.LocalesArgument = "en-US",
   currency: string = "USD",
 ): string => {
@@ -25,6 +25,5 @@ export const formatPrice = (
   return new Intl.NumberFormat(locale, {
     style: "currency",
     currency,
-    maximumFractionDigits: 0,
   }).format(numberValue);
 };

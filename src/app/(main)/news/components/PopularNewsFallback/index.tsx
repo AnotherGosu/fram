@@ -1,5 +1,3 @@
-import { Heart } from "lucide-react";
-
 import { generateKeys } from "@/lib";
 
 export const PopularNewsFallback = () => {

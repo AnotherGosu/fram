@@ -6,10 +6,12 @@ import { cn } from "@/utils/cn";
 
 interface LabelProps extends RadixLabel.LabelProps {
   required?: boolean;
+  dataTest?: string;
 }
 
 export const Label = ({
   required = false,
+  dataTest,
   className,
   ...props
 }: LabelProps) => {

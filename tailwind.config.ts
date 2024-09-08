@@ -41,6 +41,13 @@ const config: Config = {
           from: { opacity: "1", transform: "translateX(0)" },
           to: { opacity: "0", transform: "translateX(350px)" },
         },
+        contentShow: {
+          from: {
+            opacity: "0",
+            transform: "translate(-50%, -48%) scale(0.96)",
+          },
+          to: { opacity: "1", transform: "translate(-50%, -50%) scale(1)" },
+        },
       },
       animation: {
         slideUpAndFade: "slideUpAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)",
@@ -54,6 +61,7 @@ const config: Config = {
         overlayHide: "overlayHide 300ms cubic-bezier(0.16, 1, 0.3, 1)",
         drawerShow: "drawerShow 400ms cubic-bezier(0.16, 1, 0.3, 1)",
         drawerHide: "drawerHide 400ms cubic-bezier(0.16, 1, 0.3, 1)",
+        contentShow: "contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1)",
       },
     },
   },

@@ -19,9 +19,7 @@ export const useComponent = (user: User) => {
     try {
       await updateUser(values);
 
-      toast.success(NOTIFICATIONS.success.profileUpdate, {
-        duration: Infinity,
-      });
+      toast.success(NOTIFICATIONS.success.profileUpdate);
     } catch (err: any) {
       toast.error(err.message);
     }

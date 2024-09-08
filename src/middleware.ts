@@ -1,7 +1,10 @@
+import { jwtVerify } from "jose";
+import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+import { NextRequest } from "next/server";
 
-import { getProfile } from "./api/auth";
+import { SECRET } from "./constants/auth";
+import { TOKEN_COOKIE_NAME } from "./constants/auth";
 
 export async function middleware(request: NextRequest) {
   const {
@@ -12,13 +15,27 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/places", request.url));
   }
 
-  const profile = await getProfile();
+  // Authentication logic for protected pages
 
-  if ((pathname === "/sign-in" || pathname === "/sign-up") && profile) {
+  const token = cookies().get(TOKEN_COOKIE_NAME)?.value;
+
+  let isValidToken = false;
+
+  if (token) {
+    try {
+      await jwtVerify(token, SECRET);
+
+      isValidToken = true;
+    } catch {
+      cookies().delete(TOKEN_COOKIE_NAME);
+    }
+  }
+
+  if ((pathname === "/sign-in" || pathname === "/sign-up") && isValidToken) {
     return NextResponse.redirect(new URL("/profile", request.url));
   }
 
-  if (pathname === "/profile" && !profile) {
+  if (pathname === "/profile" && !isValidToken) {
     return NextResponse.redirect(new URL("/sign-in", request.url));
   }
 }

@@ -14,6 +14,7 @@ export const Accommodations = async ({ hotelId }: AccommodationsProps) => {
       {accommodations.map((accommodation) => (
         <Card
           key={accommodation.id}
+          hotelId={hotelId}
           {...accommodation}
         />
       ))}
