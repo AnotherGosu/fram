@@ -1,7 +1,7 @@
 import { Metadata } from "next";
-import Link from "next/link";
 
 import { SignInForm } from "./components/SignInForm";
+import { SignUpLink } from "./components/SignUpLink";
 
 export const metadata: Metadata = {
   title: "Sign In",
@@ -12,13 +12,7 @@ export default function Page() {
   return (
     <>
       <SignInForm />
-
-      <Link
-        href="/sign-up"
-        className="focus-ring text-sm text-stone-500 hover:underline"
-      >
-        Don&#39;t have an account? Sign up
-      </Link>
+      <SignUpLink />
     </>
   );
 }

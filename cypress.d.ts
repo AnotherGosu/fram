@@ -37,6 +37,13 @@ declare namespace Cypress {
       htmlFor: string,
     ): Chainable<JQuery<HTMLLabelElement>>;
     /**
+     * Validate input has correct id and `type` attribute value.
+     *
+     * @param id - input id
+     * @param type - `type` attribute value of input
+     */
+    validateInput(id: string, type: string): Chainable<JQuery<HTMLElement>>;
+    /**
      * Creates a sign-in session.
      */
     signIn(): void;

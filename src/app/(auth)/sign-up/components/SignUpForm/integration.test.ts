@@ -1,4 +1,5 @@
-import { AUTH } from "@/constants/test";
+import { ERRORS } from "@/constants/alerts";
+import { TEST_USER } from "@/constants/auth";
 
 describe("Sign up form", () => {
   beforeEach(() => {
@@ -8,32 +9,15 @@ describe("Sign up form", () => {
   context("Functionality", () => {
     it("should display form with correct elements", () => {
       cy.get("form").within(() => {
-        cy.contains("label", "Email").should("have.attr", "for", "email");
-        cy.contains("label", "Password").should("have.attr", "for", "password");
-        cy.contains("label", "Name").should("have.attr", "for", "name");
-        cy.contains("label", "Phone number").should(
-          "have.attr",
-          "for",
-          "phone",
-        );
+        cy.validateInputLabel("Email", "email");
+        cy.validateInputLabel("Password", "password");
+        cy.validateInputLabel("Name", "name");
 
-        cy.get("#email").should("have.attr", "type", "email");
-        cy.get("#password").should("have.attr", "type", "password");
-        cy.get("#name");
-        cy.get("#phone").should("have.attr", "type", "tel");
+        cy.validateInput("email", "email");
+        cy.validateInput("password", "password");
+        cy.validateInput("name", "text");
 
-        cy.contains("button", "Sign up");
-      });
-    });
-
-    it("should redirect to home page after successful form submission", () => {
-      cy.get("form").within(() => {
-        cy.get("#email").type(AUTH.email.right);
-        cy.get("#password").type(AUTH.password.right);
-
-        cy.getByData("sign-up-button").click();
-
-        cy.validatePathname("/places");
+        cy.getByData("submit-button").contains("Sign up");
       });
     });
   });
@@ -41,31 +25,31 @@ describe("Sign up form", () => {
   context("Validation", () => {
     it("should display error message about required fields", () => {
       cy.get("form").within(() => {
-        cy.getByData("sign-up-button").click();
+        cy.getByData("submit-button").click();
 
-        cy.contains("Email is required");
-        cy.contains("Should contain at least 8 characters");
+        cy.getByData("email-field").contains(ERRORS.min.default);
+        cy.getByData("password-field").contains(ERRORS.min.password);
       });
     });
 
     it("should display error message about invalid email", () => {
       cy.get("form").within(() => {
-        cy.get("#email").type(AUTH.email.wrong);
+        cy.get("#email").type("abc@email");
 
-        cy.getByData("sign-up-button").click();
+        cy.getByData("submit-button").click();
 
-        cy.contains("Invalid email");
+        cy.getByData("email-field").contains(ERRORS.format.email);
       });
     });
 
     it("should display error message about invalid password", () => {
       cy.get("form").within(() => {
-        cy.get("#email").type(AUTH.email.right);
-        cy.get("#password").type(AUTH.password.wrong);
+        cy.get("#email").type(TEST_USER.email);
+        cy.get("#password").type("Pass");
 
-        cy.getByData("sign-up-button").click();
+        cy.getByData("submit-button").click();
 
-        cy.contains("Should contain at least 8 characters");
+        cy.getByData("password-field").contains(ERRORS.min.password);
       });
     });
   });

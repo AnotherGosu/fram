@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { Accommodation } from "@/types/entities";
 
@@ -10,15 +11,19 @@ import { Button } from "@/components/common/Button";
 
 import { FacilityIcon } from "./components/FacilityIcon";
 
-interface CardProps extends Accommodation {}
+interface CardProps extends Accommodation {
+  hotelId: string;
+}
 
 export const Card = ({
+  id,
   name,
   image,
   numberOfBeds,
   numberOfRooms,
   facilities,
   price,
+  hotelId,
 }: CardProps) => {
   return (
     <article>
@@ -53,7 +58,14 @@ export const Card = ({
           <span>{`Beds: ${numberOfBeds}`}</span>
         </div>
 
-        <Button className="w-max">{`Book for ${formatPrice(price)}`}</Button>
+        <Button
+          asChild
+          className="w-max"
+        >
+          <Link
+            href={`/places/${hotelId}/${id}`}
+          >{`Book for ${formatPrice(price)}`}</Link>
+        </Button>
       </div>
     </article>
   );

@@ -56,3 +56,10 @@ export interface ReviewTable {
   numberOfVideos: number;
   images: string[];
 }
+
+export interface UserTable {
+  id?: string;
+  email: string;
+  hashedPassword: string;
+  name: string;
+}

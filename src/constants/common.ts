@@ -18,3 +18,6 @@ export const SOCIAL_LINKS = {
 
 export const IMAGE_PLACEHOLDER =
   "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN89OJDPQAIqQM7fxuWSwAAAABJRU5ErkJggg==";
+
+export const VAT = 0.1; // 10%
+export const SERVICE_FEE = 0.15; // 15%

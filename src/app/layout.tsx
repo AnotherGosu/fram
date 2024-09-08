@@ -1,5 +1,8 @@
 import { Metadata } from "next";
 import { Rubik } from "next/font/google";
+import { Toaster } from "sonner";
+
+import { StoreProvider } from "@/utils/provider";
 
 import "./globals.css";
 
@@ -29,7 +32,15 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={font.className}>{children}</body>
+      <body className={font.className}>
+        <StoreProvider>
+          {children}
+          <Toaster
+            toastOptions={{ className: font.className }}
+            data-test="toast"
+          />
+        </StoreProvider>
+      </body>
     </html>
   );
 }

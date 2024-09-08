@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/common/Button";
+import { FormError } from "@/components/common/FormError";
 import { Label } from "@/components/common/Label";
 import { TextInput } from "@/components/inputs/TextInput";
 
@@ -14,83 +15,60 @@ export const SignUpForm = () => {
       onSubmit={onSubmit}
       className="flex w-full max-w-xs flex-col gap-4"
     >
-      <div>
-        <div className="flex justify-between">
-          <Label
-            required
-            htmlFor="email"
-          >
-            Email
-          </Label>
-
-          <span className="text-xs text-red-500">
-            {form.formState.errors.email?.message}
-          </span>
-        </div>
+      <div data-test="email-field">
+        <Label
+          htmlFor="email"
+          required
+        >
+          Email
+        </Label>
 
         <TextInput
           id="email"
           type="email"
-          {...form.register("email")}
+          {...form.register("email", { required: true })}
         />
+
+        <FormError error={form.formState.errors.email?.message} />
       </div>
 
-      <div>
-        <div className="flex justify-between">
-          <Label
-            required
-            htmlFor="password"
-          >
-            Password
-          </Label>
-
-          <span className="text-xs text-red-500">
-            {form.formState.errors.password?.message}
-          </span>
-        </div>
+      <div data-test="password-field">
+        <Label
+          htmlFor="password"
+          required
+        >
+          Password
+        </Label>
 
         <TextInput
           id="password"
           type="password"
-          {...form.register("password")}
+          {...form.register("password", { required: true })}
         />
+
+        <FormError error={form.formState.errors.password?.message} />
       </div>
 
-      <div>
-        <div className="flex justify-between">
-          <Label htmlFor="name">Name</Label>
-
-          <span className="text-xs text-red-500">
-            {form.formState.errors.name?.message}
-          </span>
-        </div>
+      <div data-test="name-field">
+        <Label
+          htmlFor="name"
+          required
+        >
+          Name
+        </Label>
 
         <TextInput
           id="name"
-          {...form.register("name")}
+          {...form.register("name", { required: true })}
         />
-      </div>
 
-      <div>
-        <div className="flex justify-between">
-          <Label htmlFor="phone">Phone number</Label>
-
-          <span className="text-xs text-red-500">
-            {form.formState.errors.phone?.message}
-          </span>
-        </div>
-
-        <TextInput
-          id="phone"
-          type="tel"
-          {...form.register("phone")}
-        />
+        <FormError error={form.formState.errors.name?.message} />
       </div>
 
       <Button
         type="submit"
         isLoading={form.formState.isSubmitting}
-        data-test="sign-up-button"
+        data-test="submit-button"
       >
         Sign up
       </Button>

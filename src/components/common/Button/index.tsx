@@ -16,6 +16,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       className,
+      type = "button",
       variant = "default",
       isIconSize = false,
       disabled = false,
@@ -32,6 +33,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <Comp
         ref={ref}
         disabled={disabled || isLoading}
+        type={type}
         className={cn(
           "focus-ring flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-md border border-transparent px-4 py-2 text-sm font-medium disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-4",
           {

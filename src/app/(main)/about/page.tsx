@@ -19,7 +19,8 @@ export default function Page() {
         <p>
           Fram is a non-commercial project inspired by beauty of Norway. Fram
           doesn&#39;t collect any personal data or process any payment
-          transactions.
+          transactions. Even though, avoid putting any sestivie data in existing
+          forms.
         </p>
       </section>
 

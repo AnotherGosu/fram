@@ -15,11 +15,11 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({
-  params,
+  params: { hotelId },
 }: PageProps): Promise<Metadata> {
-  const hotel = await getHotel(params.hotelId);
+  const hotel = await getHotel(hotelId);
 
-  return { title: hotel?.name, description: `Book ${hotel?.name} with Fram` };
+  return { title: hotel.name, description: `Book ${hotel.name} with Fram` };
 }
 
 interface PageProps {
