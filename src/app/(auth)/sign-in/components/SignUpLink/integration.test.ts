@@ -1,4 +1,4 @@
-describe("'sign-in' page", () => {
+describe("Sign up link", () => {
   it("should display sign up link", () => {
     cy.visit("/sign-in");
 

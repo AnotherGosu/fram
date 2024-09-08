@@ -1,3 +1,4 @@
+import { TOKEN_COOKIE_NAME } from "@/constants/auth";
 import { NAVIGATION } from "@/constants/common";
 
 describe("Navigation Menu", () => {
@@ -34,8 +35,22 @@ describe("Navigation Menu", () => {
 
     cy.getByData("navigation-menu-button").click();
 
-    cy.contains("Profile").click();
+    cy.getByData("navigation-menu-content").contains("Profile").click();
 
     cy.validatePathname("/profile");
+  });
+
+  it("should display sign-out option if user is authorized", () => {
+    cy.signIn();
+
+    cy.visit("/profile");
+
+    cy.getByData("navigation-menu-button").click();
+
+    cy.getByData("navigation-menu-content").contains("Sign out").click();
+
+    cy.validatePathname("/places");
+
+    cy.getCookie(TOKEN_COOKIE_NAME).should("not.exist");
   });
 });

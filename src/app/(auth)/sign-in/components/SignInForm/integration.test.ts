@@ -1,4 +1,5 @@
-import { AUTH } from "@/constants/test";
+import { ERRORS } from "@/constants/alerts";
+import { TEST_USER, TOKEN_COOKIE_NAME } from "@/constants/auth";
 
 describe("Sign in form", () => {
   beforeEach(() => {
@@ -8,45 +9,47 @@ describe("Sign in form", () => {
   context("Functionality", () => {
     it("should display form with correct elements", () => {
       cy.get("form").within(() => {
-        cy.contains("label", "Email").should("have.attr", "for", "email");
-        cy.contains("label", "Password").should("have.attr", "for", "password");
+        cy.validateInputLabel("Email", "email");
+        cy.validateInputLabel("Password", "password");
 
-        cy.get("#email").should("have.attr", "type", "email");
-        cy.get("#password").should("have.attr", "type", "password");
+        cy.validateInput("email", "email");
+        cy.validateInput("password", "password");
 
-        cy.contains("button", "Sign in");
+        cy.getByData("submit-button").contains("Sign in");
       });
     });
 
-    it("should redirect to home page after successful form submission", () => {
+    it("should redirect to home page after successful form submission and set token cookie", () => {
       cy.get("form").within(() => {
-        cy.get("#email").type(AUTH.email.right);
-        cy.get("#password").type(AUTH.password.right);
+        cy.get("#email").type(TEST_USER.email);
+        cy.get("#password").type(TEST_USER.password);
 
-        cy.getByData("sign-in-button").click();
-
-        cy.validatePathname("/places");
+        cy.getByData("submit-button").click();
       });
+
+      cy.validatePathname("/places");
+
+      cy.getCookie(TOKEN_COOKIE_NAME).should("exist");
     });
   });
 
   context("Validation", () => {
     it("should display error message about required fields", () => {
       cy.get("form").within(() => {
-        cy.getByData("sign-in-button").click();
+        cy.getByData("submit-button").click();
 
-        cy.contains("Email is required");
-        cy.contains("Password is required");
+        cy.getByData("email-field").contains(ERRORS.min.default);
+        cy.getByData("password-field").contains(ERRORS.min.default);
       });
     });
 
     it("should display error message about invalid email", () => {
       cy.get("form").within(() => {
-        cy.get("#email").type(AUTH.email.wrong);
+        cy.get("#email").type("abc@email");
 
-        cy.getByData("sign-in-button").click();
+        cy.getByData("submit-button").click();
 
-        cy.contains("Invalid email");
+        cy.getByData("email-field").contains(ERRORS.format.email);
       });
     });
   });

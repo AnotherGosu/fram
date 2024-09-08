@@ -1,5 +1,7 @@
 "use client";
 
+import { User } from "@/types/entities";
+
 import { Button } from "@/components/common/Button";
 import { FormError } from "@/components/common/FormError";
 import { Label } from "@/components/common/Label";
@@ -7,13 +9,17 @@ import { TextInput } from "@/components/inputs/TextInput";
 
 import { useComponent } from "./useComponent";
 
-export const SignUpForm = () => {
-  const { form, onSubmit } = useComponent();
+interface ProfileFormProps {
+  user: User;
+}
+
+export const ProfileForm = ({ user }: ProfileFormProps) => {
+  const { form, onSubmit } = useComponent(user);
 
   return (
     <form
       onSubmit={onSubmit}
-      className="flex w-full max-w-xs flex-col gap-4"
+      className="grid grid-cols-2 gap-4"
     >
       <div data-test="email-field">
         <Label
@@ -26,27 +32,12 @@ export const SignUpForm = () => {
         <TextInput
           id="email"
           type="email"
+          required
+          readOnly
           {...form.register("email", { required: true })}
         />
 
         <FormError error={form.formState.errors.email?.message} />
-      </div>
-
-      <div data-test="password-field">
-        <Label
-          htmlFor="password"
-          required
-        >
-          Password
-        </Label>
-
-        <TextInput
-          id="password"
-          type="password"
-          {...form.register("password", { required: true })}
-        />
-
-        <FormError error={form.formState.errors.password?.message} />
       </div>
 
       <div data-test="name-field">
@@ -59,7 +50,7 @@ export const SignUpForm = () => {
 
         <TextInput
           id="name"
-          {...form.register("name", { required: true })}
+          {...form.register("name")}
         />
 
         <FormError error={form.formState.errors.name?.message} />
@@ -67,10 +58,12 @@ export const SignUpForm = () => {
 
       <Button
         type="submit"
+        disabled={!form.formState.isDirty}
         isLoading={form.formState.isSubmitting}
+        className="w-max"
         data-test="submit-button"
       >
-        Sign up
+        Update
       </Button>
     </form>
   );

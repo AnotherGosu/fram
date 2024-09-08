@@ -1,16 +1,17 @@
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { Menu } from "lucide-react";
 
-import { getProfile } from "@/api/auth";
+import { getCurrentUser } from "@/api/auth";
 
 import { NAVIGATION } from "@/constants/common";
 
 import { Button } from "@/components/common/Button";
 
 import { NavigationItem } from "./components/NavigationItem";
+import { SignOutItem } from "./components/SignOutItem";
 
 export const NavigationMenu = async () => {
-  const profile = await getProfile();
+  const user = await getCurrentUser();
 
   return (
     <DropdownMenu.Root>
@@ -43,11 +44,15 @@ export const NavigationMenu = async () => {
           </DropdownMenu.Group>
 
           <DropdownMenu.Group className="flex flex-col">
-            {profile ? (
-              <NavigationItem
-                title="Profile"
-                href="/profile"
-              />
+            {user ? (
+              <>
+                <NavigationItem
+                  title="Profile"
+                  href="/profile"
+                />
+
+                <SignOutItem />
+              </>
             ) : (
               <>
                 <NavigationItem

@@ -1,40 +1,45 @@
-import { CircleUserRound } from "lucide-react";
 import Link from "next/link";
 
-import { getProfile } from "@/api/auth";
+import { getCurrentUser } from "@/api/auth";
 
 import { Button } from "@/components/common/Button";
 
+import { SignOutButton } from "./components/SignOutButton";
+
 export const Authentication = async () => {
-  const profile = await getProfile();
+  const user = await getCurrentUser();
 
   return (
     <div
       className="hidden gap-3 md:flex"
       data-test="authentication"
     >
-      {profile ? (
-        <Button
-          asChild
-          isIconSize
-          variant="ghost"
-          aria-label="Profile"
-          data-test="profile-link"
-        >
-          <Link href="/profile">
-            <CircleUserRound className="!size-6" />
-          </Link>
-        </Button>
+      {user ? (
+        <>
+          <Button
+            asChild
+            variant="ghost"
+            data-test="profile-button"
+          >
+            <Link href="/profile">Profile</Link>
+          </Button>
+
+          <SignOutButton />
+        </>
       ) : (
         <>
           <Button
             asChild
             variant="ghost"
+            data-test="sign-up-button"
           >
             <Link href="/sign-up">Sign up</Link>
           </Button>
 
-          <Button asChild>
+          <Button
+            asChild
+            data-test="sign-in-button"
+          >
             <Link href="/sign-in">Sign in</Link>
           </Button>
         </>

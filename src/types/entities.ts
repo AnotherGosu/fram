@@ -3,6 +3,7 @@ import {
   HotelTable,
   NewsTable,
   ReviewTable,
+  UserTable,
 } from "./tables";
 
 export interface Hotel extends Omit<HotelTable, "cityId"> {
@@ -17,3 +18,5 @@ export interface Accommodation extends AccommodationTable {
 export interface News extends NewsTable {}
 
 export interface Review extends ReviewTable {}
+
+export interface User extends Omit<UserTable, "hashedPassword"> {}

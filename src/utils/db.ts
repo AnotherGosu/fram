@@ -10,6 +10,7 @@ import {
   HotelToAccommodationTable,
   NewsTable,
   ReviewTable,
+  UserTable,
 } from "@/types/tables";
 
 interface Database {
@@ -21,6 +22,7 @@ interface Database {
   city: CityTable;
   news: NewsTable;
   review: ReviewTable;
+  users: UserTable;
 }
 
 export const db = createKysely<Database>(undefined, {

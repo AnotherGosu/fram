@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import authImg from "@/images/auth.jpg";
 
@@ -10,7 +11,14 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <main className="grid h-dvh grid-cols-1 grid-rows-[1fr_2fr] md:grid-cols-2 md:grid-rows-1">
       <div className="flex flex-col items-center justify-center gap-4 p-4">
-        <h1 className="text-2xl font-semibold">Fram</h1>
+        <h1 className="text-2xl font-semibold">
+          <Link
+            href="/"
+            className="focus:outline-blue-300"
+          >
+            Fram
+          </Link>
+        </h1>
 
         {children}
       </div>

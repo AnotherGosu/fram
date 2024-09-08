@@ -12,6 +12,7 @@ export const SignOutButton = () => {
       isLoading={isLoading}
       onClick={onSignOut}
       className="w-max"
+      data-test="sign-out-button"
     >
       Sign Out
     </Button>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "sonner";
 
 import { signOut } from "@/api/auth";
 
@@ -10,8 +11,8 @@ export const useComponent = () => {
       setIsLoading(true);
 
       await signOut();
-    } catch (err) {
-      console.error(err);
+    } catch (err: any) {
+      toast.error(err.message);
     } finally {
       setIsLoading(false);
     }
