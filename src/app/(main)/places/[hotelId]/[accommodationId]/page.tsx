@@ -1,21 +1,11 @@
 import { Metadata } from "next";
 
-import { getAccommodation, getAccommodationIds } from "@/api/accommodations";
+import { getAccommodation } from "@/api/accommodations";
 import { getCurrentUser } from "@/api/auth";
 import { getHotel } from "@/api/hotels";
 
 import { PaymentSection } from "./components/PaymentSection";
 import { Summary } from "./components/Summary";
-
-export async function generateStaticParams({
-  params: { hotelId },
-}: {
-  params: { hotelId: string };
-}) {
-  const ids = await getAccommodationIds(hotelId);
-
-  return ids.map((id) => ({ accommodationId: id }));
-}
 
 export async function generateMetadata({
   params: { hotelId, accommodationId },
