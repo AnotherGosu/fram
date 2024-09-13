@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { IMAGE_PLACEHOLDER } from "@/constants/common";
+
 import authImg from "@/images/auth.jpg";
 
 interface LayoutProps {
@@ -29,6 +31,7 @@ export default function Layout({ children }: LayoutProps) {
           alt="Banner"
           fill
           sizes="(min-width: 768px) 50vw, 100vw"
+          placeholder={IMAGE_PLACEHOLDER}
           className="object-cover"
         />
 
