@@ -1,9 +1,16 @@
-import { Loader } from "@/components/common/Loader";
+import { AccommodationsFallback } from "./components/AccommodationsFallback";
+import { HotelFallback } from "./components/HotelFallback";
 
 export default function Loading() {
   return (
-    <div className="flex h-full items-center justify-center">
-      <Loader className="size-8" />
-    </div>
+    <>
+      <HotelFallback />
+
+      <section>
+        <h2 className="mb-4 text-xl font-semibold">Available accommodations</h2>
+
+        <AccommodationsFallback />
+      </section>
+    </>
   );
 }

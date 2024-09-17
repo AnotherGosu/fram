@@ -33,7 +33,8 @@ export const ConfirmationDialog = ({
         <Dialog.Content
           aria-describedby={undefined}
           onOpenAutoFocus={(e) => e.preventDefault()}
-          className="data-[state=open]:animate-contentShow fixed left-1/2 top-1/2 flex w-full max-w-2xl -translate-x-1/2 -translate-y-1/2 transform flex-col gap-4 rounded-md bg-white p-4 sm:p-8"
+          className="fixed left-1/2 top-1/2 flex w-full max-w-2xl -translate-x-1/2 -translate-y-1/2 transform flex-col gap-4 rounded-md bg-white p-4 data-[state=open]:animate-contentShow sm:p-8"
+          data-test="confirmation-dialog-content"
         >
           <Dialog.Title className="mb-4 text-center text-xl font-semibold">
             Booking confirmed

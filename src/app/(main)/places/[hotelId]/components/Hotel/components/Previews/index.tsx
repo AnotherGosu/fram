@@ -20,7 +20,10 @@ export const Previews = ({ previews }: PreviewsProps) => {
 
   return (
     <>
-      <div className="flex justify-center gap-4">
+      <div
+        className="flex justify-center gap-4"
+        data-test="previews"
+      >
         {previews.map((preview, key) => (
           <Image
             key={key}

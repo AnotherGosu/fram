@@ -3,6 +3,8 @@ import { Suspense } from "react";
 
 import { SearchParams } from "@/types/common";
 
+import { IMAGE_PLACEHOLDER } from "@/constants/common";
+
 import heroImg from "@/images/hero.jpg";
 
 import { createQueryString } from "@/lib";
@@ -31,6 +33,7 @@ export default function Page({ searchParams }: PageProps) {
           alt="Hero"
           fill
           priority
+          placeholder={IMAGE_PLACEHOLDER}
           sizes="100vw"
           className="-z-10 object-cover"
         />

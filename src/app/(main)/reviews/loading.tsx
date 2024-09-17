@@ -1,9 +1,15 @@
-import { Loader } from "@/components/common/Loader";
+import { ReviewsFallback } from "./components/ReviewsFallback";
 
 export default function Loading() {
   return (
-    <div className="flex h-full items-center justify-center">
-      <Loader className="size-8" />
-    </div>
+    <>
+      <section>
+        <h2 className="mb-4 text-xl font-semibold">Reviews</h2>
+
+        <p className="mb-8">Explore reviews from other travellers</p>
+
+        <ReviewsFallback />
+      </section>
+    </>
   );
 }
