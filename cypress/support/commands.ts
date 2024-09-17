@@ -1,10 +1,10 @@
 import { TEST_USER } from "@/constants/auth";
 
-Cypress.Commands.add("getByData", (value: string, options) => {
+Cypress.Commands.add("getByData", (value, options) => {
   return cy.get(`[data-test=${value}]`, options);
 });
 
-Cypress.Commands.add("validatePathname", (value: string) => {
+Cypress.Commands.add("validatePathname", (value) => {
   return cy.location("pathname").should("eq", value);
 });
 

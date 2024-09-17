@@ -24,6 +24,7 @@ export const PaymentForm = ({ user, onPaymentConfirmed }: PaymentFormProps) => {
     <form
       onSubmit={onSubmit}
       className="flex flex-col gap-8"
+      data-test="payment-form"
     >
       <div className="grid grid-cols-[2fr_1fr] gap-4">
         <div data-test="cardholder-field">
@@ -106,6 +107,7 @@ export const PaymentForm = ({ user, onPaymentConfirmed }: PaymentFormProps) => {
 
           <TextInput
             id="email"
+            type="email"
             {...register("email", { required: true })}
           />
 
@@ -133,6 +135,7 @@ export const PaymentForm = ({ user, onPaymentConfirmed }: PaymentFormProps) => {
         type="submit"
         isLoading={formState.isSubmitting}
         className="w-max"
+        data-test="submit-button"
       >
         Confirm payment
       </Button>
